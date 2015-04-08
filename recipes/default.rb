@@ -334,6 +334,7 @@ when 'midonet'
 
 when 'ml2'
 
+  local_ip = address_for(node['openstack']['network']['ml2']['gre_tunnel_interface'])
   template_file = '/etc/neutron/plugins/ml2/ml2_conf.ini'
 
   template template_file do
@@ -341,7 +342,9 @@ when 'ml2'
     owner node['openstack']['network']['platform']['user']
     group node['openstack']['network']['platform']['group']
     mode 00644
-
+    variables(
+      local_ip: local_ip
+    )
     notifies :restart, 'service[neutron-server]', :delayed
   end
 
