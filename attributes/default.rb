@@ -1025,6 +1025,9 @@ default['openstack']['network']['ml2']['enable_security_group'] = 'True'
 # requires that ipset is installed on L2 agent node.
 default['openstack']['network']['ml2']['enable_ipset'] = 'True'
 
+# Use to detect IP address for the GRE tunnel
+default['openstack']['network']['ml2']['gre_tunnel_interface'] = 'eth1'
+
 # Misc option support
 # Allow additional strings to be added to neutron.conf
 # For example:  ['# Comment', 'key=value']
